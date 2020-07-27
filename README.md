@@ -1,2 +1,35 @@
 # Event-Booking
 GraphQL w/ MERN (MangoDB, Express, React and Node)
+
+Installed NPM 
+    STEPS TO CREATED BASIC NODE EXPRRESS SERVER 
+        1) run on terminal npm init 
+        <!--TO UPDATE NPM  -->
+        npm install -g npm
+        <!--  -->
+        2) npm install --save express body-parser
+        3) run npm install --save-dev nodemon
+        4) added to package.json "start": "nodemon app.js"
+
+    STEPS GRAPHQL API IMPLEMENTATION
+        install extra packages to make GraphQL run
+        1) npm install --save express-graphql 
+            descripiton of package: graphql package that can be used as a middleware in express nodejs applications
+                                    and that allows us to point at a schema at resolvers and automatically connect
+                                    all of it for us and route request to a parser and then handle them according to the schema
+                                    and forward them to the right resolvers.
+        2) npm install --save graphql
+            description of package: allow us to define the schema and setup the schema that follows the official 
+                                    graphql specifications and definitions and that will return a valid schema.
+                                    Its going to parse the schema and convert it which then can be used to gather with expres
+                                    graphql.
+
+    WHAT IS GRAPHQL:
+        GraphQL is basicly a specification that defines query language which clients can send in 
+        the body of a post request to the backend. So the job of the backend will be to parse these incoming queries
+        to understand these commands sent by the frontend and deliver the right data back to the frontend or do whatever query 
+        instructs you to do there are also mutations which allows the server to save, delete or update something.
+
+    START PROJECT 
+        run npm start 
+
