@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql').graphqlHTTP;
 const { buildSchema } = require('graphql');
 const { assertValidExecutionArguments } = require('graphql/execution/execute');
+const mongoose = require('mongoose')
 
 // Imported from the express package to create an express app object which in return can start node server.
 const app = express();
@@ -66,6 +67,14 @@ graphqlHttp({
     graphiql: true
 })
 );
-
+// Conecting database 
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}
+@cluster0.nmugw.mongodb.net/<dbname>?retryWrites=true&w=majority`).then(()=> {
+    // if promise success start server 
+    app.listen(3000)
+}).catch(err => {
+    // else log error
+    console.log(err)
+});
 // Calling port 3000
 app.listen(3000);

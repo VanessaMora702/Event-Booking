@@ -23,6 +23,13 @@ Installed NPM
                                     graphql specifications and definitions and that will return a valid schema.
                                     Its going to parse the schema and convert it which then can be used to gather with expres
                                     graphql.
+    STEPS TO INSTALL MONGODB DATABASE TO APP
+        1) Created a new mongoDB Cluster, Database User and also added Local IP address
+        2) npm install --save mongoose
+            description of package: Installed Mongoose third party libary that builds on mongoDB driver and adds convinence      
+                                    features that allows you to work with models that allows you to mange data through Javascript objects
+
+
 
     WHAT IS GRAPHQL:
         GraphQL is basicly a specification that defines query language which clients can send in 
