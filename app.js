@@ -4,11 +4,12 @@ const graphqlHttp = require('express-graphql').graphqlHTTP;
 const { buildSchema } = require('graphql');
 const { assertValidExecutionArguments } = require('graphql/execution/execute');
 const mongoose = require('mongoose')
+const Event = require('./models/event');
 
 // Imported from the express package to create an express app object which in return can start node server.
 const app = express();
 
-const events = [];
+// const events = [];
 
 // body parser incoming json 
 app.use(bodyParser.json());
@@ -53,15 +54,30 @@ graphqlHttp({
             return events;
         },
         createEvent: (args) => {
-            const event = {
-                _id: Math.random().toString(),
+            // BEFORE DATABASE 
+            // const event = {
+            //     _id: Math.random().toString(),
+            //     title: args.eventInput.title,
+            //     description: args.eventInput.description,
+            //     price: +args.eventInput.price,
+            //     date: args.eventInput.date
+            // };
+            // AFTER DATABASE
+            const event = new Event({
                 title: args.eventInput.title,
                 description: args.eventInput.description,
                 price: +args.eventInput.price,
-                date: args.eventInput.date
-            }
-             events.push(event);
-             return event;
+                date: new Date(args.eventInput.date)
+            });
+            return event.save().then(result => {
+                console.log(result);
+                return {...result._doc}
+            }).catch(err => {
+                console.log(err);
+                throw err;
+            });
+            // return event;
+            //  events.push(event);
         }
     },
     graphiql: true
