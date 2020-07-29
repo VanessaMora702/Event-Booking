@@ -16,25 +16,6 @@ const app = express();
 // body parser incoming json 
 app.use(bodyParser.json());
 
-const user = userId => {
-    return User.findById(userId).then(user => {
-        return {...user._doc, _id: user.id, createdEvents: events.bind(this, user._doc.createdEvents)}
-     }).catch(error => {
-        throw err
-    })
-}
-
-const events = eventIds => {
-    return Event.find({_id: {$in: eventIds}}).then(events => {
-        return events.map(event => {
-            return {...event._doc,
-                 _id: event.id, 
-                 creator: user.bind(this, event.creator)}
-        })
-     }).catch(error => {
-        throw error;
-    })
-}
 
 
 // app.get('/', (req, res, next) => {
