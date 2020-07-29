@@ -35,8 +35,9 @@ Install NPM
         1) npm install --save jsonwebtoken
             description of package: helps generate json web token which verifies if the users login information is
                                     correct.
-
-
+    STEPS TO CREATING REACT APP
+         1) npx create-react-app
+           
     WHAT IS GRAPHQL:
         GraphQL is basicly a specification that defines query language which clients can send in 
         the body of a post request to the backend. So the job of the backend will be to parse these incoming queries

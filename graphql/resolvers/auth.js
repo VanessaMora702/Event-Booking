@@ -35,7 +35,7 @@ module.exports =  {
             if (!isEqual) {
                 throw Error("Password is incorrect")
             }
-            // token that is not hashed with secretKey somesupersecretkey is invalid 
+            // token that is not hashed with secretKey somesupersecretkey //test123 is invalid 
            const token =  jwt.sign({userId: user.id, email: user.email}, 'somesupersecretkey', {
                expiresIn: '1h'
            });
