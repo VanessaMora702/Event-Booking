@@ -2,6 +2,6 @@
     "env": {
          "MONGO_USER": "VanessaMora",
          "MONGO_PASSWORD": "nrsZ8orZg7nFeunk",
-         "MONGO_DB": "events-react-dev"
+         "MONGO_DB": "event-booking"
     }
 }
