@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 const user = userId => {
     return User.findById(userId).then(user => {
-        return {...user._doc, _id: user.id, createdEvents: events.bind(this, user._doc.createEvents)}
+        return {...user._doc, _id: user.id, createdEvents: events.bind(this, user._doc.createdEvents)}
      }).catch(error => {
         throw err
     })
@@ -95,7 +95,7 @@ graphqlHttp({
            .then(events => {
             // mongoose returns metadata
                 return events.map(event => {
-                    return { ...events._doc, 
+                    return { ...event._doc, 
                         _id: event._doc._id.toString(),
                         creator: user.bind(this, event._doc.creator)
                     };
@@ -115,9 +115,8 @@ graphqlHttp({
             });
             let createdEvent
             return event.save().then(result => {
-                createdEvent = { ...result._doc, _id: event.id}
+                createdEvent = { ...result._doc, _id: event.id, creator: user.bind(this, result._doc.creator)}
                 return User.findById('5f20bd245f53f203d81d92ff')
-                return { ...result._doc, _id: event.id}
             }).then(user => {
                 if (!user) {
                     throw new Error("User not found.")
