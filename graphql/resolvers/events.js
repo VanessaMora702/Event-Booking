@@ -1,4 +1,6 @@
 const Event = require('../../models/event');
+const User = require('../../models/user');
+
 const { transformEvent } = require('./merge');
 
 
@@ -26,12 +28,12 @@ const { transformEvent } = require('./merge');
             description: args.eventInput.description,
             price: +args.eventInput.price,
             date: dateToString(args.eventInput.date),
-            creator: '5f20bd245f53f203d81d92ff'
+            creator: req.userId
         });
         let createdEvent
         return event.save().then(result => {
             createdEvent = transformEvent(result)
-            return User.findById('5f20bd245f53f203d81d92ff')
+            return User.findById(req.userId)
         }).then(user => {
             if (!user) {
                 throw new Error("User not found.")
