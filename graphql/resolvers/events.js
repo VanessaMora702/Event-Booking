@@ -4,7 +4,7 @@ const { transformEvent } = require('./merge');
 
     // resolver functions that need to match schemas by name
     module.exports = {
-        getEvents: () => {
+    getEvents: () => {
         // return events;
        return Event.find()
        .then(events => {
@@ -17,7 +17,10 @@ const { transformEvent } = require('./merge');
         })
     },
     // Create Event
-    createEvent: (args) => {
+    createEvent: (args, req) => {
+        if (!req.isAuth) {
+            throw new Error("User is unauthenticated!");
+        }
         const event = new Event({
             title: args.eventInput.title,
             description: args.eventInput.description,

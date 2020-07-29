@@ -26,11 +26,15 @@ Install NPM
         2) npm install --save mongoose
             description of package: Installed Mongoose third party libary that builds on mongoDB driver and adds convinence      
                                     features that allows you to work with models that allows you to mange data through Javascript objects
-    STEPS TO HASH PASSWORDS
+    STEPS TO HASH PASSWORDS 
         1) npm install --save bcryptjs
             description of package: gives cryptographic methods that helps create a hash which you can later
                                     compare into an incoming password to see if incoming password is corrrect but
                                     prevents you to get the original password.
+    STEPS TO CREATE A JASON WEB TOKEN
+        1) npm install --save jsonwebtoken
+            description of package: helps generate json web token which verifies if the users login information is
+                                    correct.
 
 
     WHAT IS GRAPHQL:

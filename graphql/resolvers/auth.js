@@ -1,6 +1,7 @@
 
 const bcrypt = require('bcryptjs');
 const User = require('../../models/user');
+const jwt = require('jsonwebtoken');
 
 
 module.exports =  {
@@ -25,4 +26,19 @@ module.exports =  {
             throw error;
         })
     },
+    login: async ({email, password}) => {
+             const user = await User.findOne({email: email});
+            if (!user) {
+                throw Error("User does not exist")
+            }
+            const isEqual = await bcrypt.compare(password, user.password);
+            if (!isEqual) {
+                throw Error("Password is incorrect")
+            }
+            // token that is not hashed with secretKey somesupersecretkey is invalid 
+           const token =  jwt.sign({userId: user.id, email: user.email}, 'somesupersecretkey', {
+               expiresIn: '1h'
+           });
+           return { userId: user.id, token: token, tokenExpiration: 1}
+    }
 }
