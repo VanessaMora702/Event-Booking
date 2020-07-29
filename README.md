@@ -1,7 +1,8 @@
 # Event-Booking
 GraphQL w/ MERN (MangoDB, Express, React and Node)
 
-Installed NPM 
+Install NPM 
+
     STEPS TO CREATED BASIC NODE EXPRRESS SERVER 
         1) run on terminal npm init 
         2) npm install --save express body-parser
