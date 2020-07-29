@@ -18,6 +18,27 @@ const app = express();
 // body parser incoming json 
 app.use(bodyParser.json());
 
+const user = userId => {
+    return User.findById(userId).then(user => {
+        return {...user._doc, _id: user.id, createdEvents: events.bind(this, user._doc.createEvents)}
+     }).catch(error => {
+        throw err
+    })
+}
+
+const events = eventIds => {
+    return Event.find({_id: {$in: eventIds}}).then(events => {
+        return events.map(event => {
+            return {...event._doc,
+                 _id: event.id, 
+                 creator: user.bind(this, event.creator)}
+        })
+     }).catch(error => {
+        throw error;
+    })
+}
+
+
 // app.get('/', (req, res, next) => {
 //     res.send("Hello world");
 // })
@@ -31,12 +52,14 @@ graphqlHttp({
             description: String!
             price: Float!
             date: String!
+            creator: User!
         }
 
         type User {
             _id: ID!
             email: String!
             password: String
+            createdEvents: [Event!]
         }
 
         input EventInput {
@@ -68,13 +91,17 @@ graphqlHttp({
         // resolver functions that need to match schemas by name
         getEvents: () => {
             // return events;
-           return Event.find().then(events => {
+           return Event.find()
+           .then(events => {
             // mongoose returns metadata
                 return events.map(event => {
-                    return { ...events._doc, _id: event._doc._id.toString()};
+                    return { ...events._doc, 
+                        _id: event._doc._id.toString(),
+                        creator: user.bind(this, event._doc.creator)
+                    };
                 })
             }).catch(error => {
-                console.log("get events error", error)
+                throw error;
             })
         },
         // Create Event

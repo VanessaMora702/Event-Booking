@@ -4,9 +4,6 @@ GraphQL w/ MERN (MangoDB, Express, React and Node)
 Installed NPM 
     STEPS TO CREATED BASIC NODE EXPRRESS SERVER 
         1) run on terminal npm init 
-        <!--TO UPDATE NPM  -->
-        npm install -g npm
-        <!--  -->
         2) npm install --save express body-parser
         3) run npm install --save-dev nodemon
         4) added to package.json "start": "nodemon app.js"
