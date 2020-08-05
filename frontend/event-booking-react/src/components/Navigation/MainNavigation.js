@@ -22,10 +22,16 @@ const mainNavigation = props => (
                 <NavLink to="/events">Events</NavLink>
               </li>
               {/* allow user to click on authenticate token has value  */}
-              {context.token &&  <li>
+              {context.token && (
+                <React.Fragment>
+                <li>
                 <NavLink to="/bookings">Bookings</NavLink>
-              </li>}
-        
+              </li>
+                 <li>
+                 <button onClick={context.logout}>Logout</button>
+               </li>
+                </React.Fragment>
+              )}
             </ul>
           </nav>
         </header>
