@@ -29,10 +29,12 @@ class App extends Component {
         <MainNavigation/>
           <main>
           <Switch>
-          <Redirect from="/" to="/auth" exact/>
-          <Route path="/auth" component={AuthPage}/>
-          <Route path="/events" component={EventPage}/>
-          <Route path="/bookings" component={BookingPage}/>
+          {!this.state.token && <Redirect from="/" to="/auth" exact/>}
+          {this.state.token && <Redirect from="/" to="/events" exact/>}
+          {this.state.token && <Redirect from="/auth" to="/events" exact/>}
+          {!this.state.token && <Route path="/auth" component={AuthPage}/>}
+          {<Route path="/events" component={EventPage}/>}
+          {this.state.token && <Route path="/bookings" component={BookingPage}/>}
           </Switch>
           </main>
           </AuthContext.Provider>
