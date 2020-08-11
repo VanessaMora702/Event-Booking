@@ -37,6 +37,9 @@ Install NPM
                                     correct.
     STEPS TO CREATING REACT APP
          1) npx create-react-app
+         2) npm install --save react-rounter-dom
+            description of package: helps route files maintaing single page application, react router will watch for   
+                                    changes in the url and render different components to the screen.
            
     WHAT IS GRAPHQL:
         GraphQL is basicly a specification that defines query language which clients can send in 

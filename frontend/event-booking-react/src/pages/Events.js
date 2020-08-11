@@ -83,6 +83,7 @@ class EventsPage extends Component {
         return res.json();
       })
       .then(resData => {
+        console.log("RESPONSE DATA", resData);
         this.setState(prevState => {
           const updatedEvents = [...prevState.events];
           updatedEvents.push({

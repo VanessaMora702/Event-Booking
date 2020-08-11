@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser'); 
 const graphqlHttp = require('express-graphql').graphqlHTTP;
 const mongoose = require('mongoose');
-
 const graphQlSchema = require('./graphql/schema/index');
 const graphQlResolvers = require('./graphql/resolvers/index');
 const isAuth = require('./graphql/middleware/is-auth');
@@ -21,6 +20,18 @@ app.use(bodyParser.json());
 // app.get('/', (req, res, next) => {
 //     res.send("Hello world");
 // })
+
+// CORS policy add headers
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin',  '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
+
 app.use(isAuth);
 
 app.use('/graphql' , 
@@ -39,5 +50,5 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
     console.log("Database connection error", err)
 });
 
-// Calling port 3000
-app.listen(3000);
+// Calling port 8000
+app.listen(8000);
