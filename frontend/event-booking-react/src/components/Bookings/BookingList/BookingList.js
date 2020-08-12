@@ -3,7 +3,7 @@ import React from 'react';
 import '../BookingList.css';
 
 const bookingList = props => (
-  <ul className="bookings__list">
+  <ul className="bookings__list margin_top">
     {props.bookings.map(booking => {
       return (
         <li key={booking._id} className="bookings__item">

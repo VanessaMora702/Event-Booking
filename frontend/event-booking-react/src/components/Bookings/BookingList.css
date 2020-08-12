@@ -15,3 +15,7 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  .margin_top {
+    margin-top: 6%;
+  }
