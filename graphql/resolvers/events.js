@@ -6,7 +6,7 @@ const { transformEvent } = require('./merge');
 
     // resolver functions that need to match schemas by name
     module.exports = {
-    getEvents: () => {
+    events: () => {
         // return events;
        return Event.find()
        .then(events => {

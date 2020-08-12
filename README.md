@@ -40,7 +40,7 @@ Install NPM
          2) npm install --save react-rounter-dom
             description of package: helps route files maintaing single page application, react router will watch for   
                                     changes in the url and render different components to the screen.
-    STEPS TO REDUCE AMOUNT OF REQUESTS CALLED 
+    STEPS TO REDUCE AMOUNT OF REQUESTS CALLED WHICH SPEEDS UP API AND PREVENTS DUPLICATE REQUESTS 
         1) npm install --save dataloader
             description of package: is a generic utility to be used as part of your application's data fetching layer to provide a simplified and consistent API over various remote data sources such as databases or web services via batching and caching.
            

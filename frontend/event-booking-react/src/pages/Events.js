@@ -113,7 +113,7 @@ class EventsPage extends Component {
     const requestBody = {
       query: `
           query {
-            getEvents {
+            events {
               _id
               title
               description
@@ -142,7 +142,7 @@ class EventsPage extends Component {
         return res.json();
       })
       .then(resData => {
-        const events = resData.data.getEvents;
+        const events = resData.data.events;
         if (this.isActive) {
           this.setState({ events: events, isLoading: false });
         }
@@ -170,7 +170,7 @@ class EventsPage extends Component {
     const requestBody = {
       query: `
           mutation {
-            createBooking(eventId: "${this.state.selectedEvent._id}") {
+            bookEvent(eventId: "${this.state.selectedEvent._id}") {
               _id
              createdAt
              updatedAt

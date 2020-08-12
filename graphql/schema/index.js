@@ -45,7 +45,7 @@ module.exports = buildSchema(`
         }
 
         type RootQuery {
-            getEvents: [Event!]!
+            events: [Event!]!
             bookings: [Booking!]!
             login(email: String!, password: String!): AuthData!
         }
@@ -53,7 +53,7 @@ module.exports = buildSchema(`
         type RootMutations {
             createEvent(eventInput: EventInput): Event
             createUser(userInput: UserInput): User
-            createBooking(eventId: ID!): Booking!
+            bookEvent(eventId: ID!): Booking!
             cancelBooking(bookingId: ID!): Event!
         }
         schema {

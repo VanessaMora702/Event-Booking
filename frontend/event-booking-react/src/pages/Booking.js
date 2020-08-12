@@ -51,6 +51,7 @@ class BookingsPage extends Component {
       })
       .then(resData => {
         const bookings = resData.data.bookings;
+        console.log("RES BOOKING", bookings);
         this.setState({ bookings: bookings, isLoading: false });
       })
       .catch(err => {
