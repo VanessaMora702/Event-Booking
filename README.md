@@ -43,13 +43,35 @@ Install NPM
     STEPS TO REDUCE AMOUNT OF REQUESTS CALLED WHICH SPEEDS UP API AND PREVENTS DUPLICATE REQUESTS 
         1) npm install --save dataloader
             description of package: is a generic utility to be used as part of your application's data fetching layer to provide a simplified and consistent API over various remote data sources such as databases or web services via batching and caching.
-           
+     STEPS TO INSTALL REACT CHART.JS
+        1) npm install --save react-chartjs
+            description of package: supports Line Charts, Bar Chart, Radar Chart, Polar are Chart, Pie Chart, Doughnut Chart works with any framework.
+        2) npm install --save chart.js
+            description of package: you need both packages installed if you run the first package without 2nd it will give you an error
+                                     Error Can't resolve 'chart.js' in node_modules path.
+
     WHAT IS GRAPHQL:
         GraphQL is basicly a specification that defines query language which clients can send in 
         the body of a post request to the backend. So the job of the backend will be to parse these incoming queries
         to understand these commands sent by the frontend and deliver the right data back to the frontend or do whatever query 
         instructs you to do there are also mutations which allows the server to save, delete or update something.
 
+    NOTES: 
+        How to uninstall an npm Node package, locally or globally
+        npm uninstall <package-name> from the project root folder (the folder that contains the node_modules folder). ...
+        npm uninstall -S <package-name> npm uninstall -D <package-name> ...
+        npm uninstall -g <package-name>
+        
     START PROJECT 
         run npm start 
+
+     <!-- THERE IS LOTS OF ROOM FOR IMPROVMENT:
+            1) Add Persistent Authentication so you dont have to login everytime page refreshes
+            Store Token locally storage add expiry time or add refresh token
+            2) With dataloader you can set up catching per request user interface instead of the catching it has per server lifetime not optimal
+            3) Add toast notification for user's 
+            4) Mobile responsive
+            5) Utilize third party library like Apollo : Huge libary that can help create both graphQL servers backend as well as use it on the frontend
+                for efficient request and catching of API responses on the frontend.
+            -->
 

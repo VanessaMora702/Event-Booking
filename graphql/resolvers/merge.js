@@ -4,7 +4,7 @@ const User = require('../../models/user');
 const { dateToString } = require('../helpers/date');
 
 // CREATED DATALOADER OBJECT THAT TAKES A BATCHING FUNCTION THAT CAN EXECUTE FOR ALL KINDS OF EVENTS
-const eventLoader = new DataLoader((eventIds) => {
+const eventLoader = new DataLoader(eventIds => {
     //EXECUTE FUNCTION THAT RETURNS EVENT IDS
     return events(eventIds);
 });
@@ -16,7 +16,7 @@ const eventLoader = new DataLoader((eventIds) => {
 */ 
 const userLoader = new DataLoader(userIds => {
     // RETURN PROMISE USER FINDS RETURNS SUCH A PROMISE WITH ARRAY OF USERS 
-    return User.find({_id: {$in: userIds}});
+    return User.find({ _id: { $in: userIds }});
   });
 
   const user = async userId => {
@@ -38,6 +38,12 @@ const events = async eventIds => {
     // TAKES ARRAY OF EVENTS IDS AND RETURNS THE EVENTS IT FOUND WITH THAT ID 
     try {
     const events = await Event.find({ _id: { $in: eventIds }})
+    events.sort((a, b) => {
+        return (
+            // comparing decides which come first positon and order sorts events by Id
+          eventIds.indexOf(a._id.toString()) - eventIds.indexOf(b._id.toString())
+        );
+      });
     return events.map(event => {
             return transformEvent(event)
         });

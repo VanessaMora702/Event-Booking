@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../BookingList.css';
+import './BookingList.css';
 
 const bookingList = props => (
   <ul className="bookings__list">
