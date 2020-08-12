@@ -47,7 +47,6 @@ const events = async eventIds => {
 }
 
 const transformEvent = event => {
-    console.log("EVENTTT", event);
     return {
         ...event._doc,
         _id: event.id, 
