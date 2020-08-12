@@ -26,8 +26,8 @@ class App extends Component {
         <BrowserRouter>
         <React.Fragment>
           <AuthContext.Provider value={{token: this.state.token, userId: this.state.userId, login: this.login, logout: this.logout}}>
-        <MainNavigation/>
-          <main>
+        <MainNavigation />
+          <main className= "margin_top" > 
           <Switch>
           {this.state.token && <Redirect from="/" to="/events" exact/>}
           {this.state.token && <Redirect from="/auth" to="/events" exact/>}
