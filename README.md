@@ -63,7 +63,8 @@ Install NPM
         npm uninstall -g <package-name>
         
     START PROJECT 
-        run npm start 
+        run npm start for backend
+        navigate to frontend folder event-booking and run npm start to start frontend
 
      <!-- THERE IS LOTS OF ROOM FOR IMPROVMENT:
             1) Add Persistent Authentication so you dont have to login everytime page refreshes
